@@ -1,0 +1,136 @@
+<!-- This example requires Tailwind CSS v2.0+ -->
+<nav class="bg-gray-800" style="position: fixed; top: 0; width: 100%;">
+    <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+      <div class="relative flex items-center justify-between h-16">
+        <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+          <!-- Mobile menu button-->
+          <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <!--
+              Icon when menu is closed.
+  
+              Heroicon name: outline/menu
+  
+              Menu open: "hidden", Menu closed: "block"
+            -->
+            <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <!--
+              Icon when menu is open.
+  
+              Heroicon name: outline/x
+  
+              Menu open: "block", Menu closed: "hidden"
+            -->
+            <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+          <div class="flex-shrink-0 flex items-center">
+            <img class="block lg:hidden h-8 w-auto" src="../../assets/logo/logo2.png" alt="Workflow">
+            <img class="hidden lg:block h-8 w-auto" src="../../assets/logo/logo3.png" alt="Workflow">
+            &nbsp; &nbsp; <h5 class="text-gray-300 text-sm font-bold">TS Groceries</h5>
+          </div>
+          <div class="hidden sm:block sm:ml-6">
+            <div class="flex space-x-4">
+              <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+              <a (click)="showAll()" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">All</a>
+  
+              <a (click)="showCatagoryItems(FRUITS)" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" routerLink="/catagories">Fruits</a>
+  
+              <a (click)="showCatagoryItems(VEGITABLES)" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Vegitables</a>
+  
+              <a (click)="showCatagoryItems(DAIRY)" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Dairy</a>
+            </div>
+          </div>
+        </div>
+        <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+
+
+          <div class="relative text-gray-600 focus-within:text-gray-400">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+              <button (click)="searchItems()" type="submit" class="p-1 focus:outline-none focus:shadow-outline">
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+              </button>
+            </span>
+            <input [(ngModel)]= "search" type="search" name="q" class="py-2 text-sm text-white bg-gray-900 rounded-md pl-10 focus:outline-none focus:bg-white focus:text-gray-900" placeholder="Search..." autocomplete="off">
+          </div>
+
+            <!------cart ------>
+          <li class="font-sans block mt-4 lg:inline-block lg:mt-0 lg:ml-6 align-middle text-gray-300 hover:text-gray-700">
+            <a routerLink="/cart" role="button" class="relative flex">
+              <svg class="flex-1 w-8 h-8 fill-current" viewbox="0 0 24 24">
+                <path d="M17,18C15.89,18 15,18.89 15,20A2,2 0 0,0 17,22A2,2 0 0,0 19,20C19,18.89 18.1,18 17,18M1,2V4H3L6.6,11.59L5.24,14.04C5.09,14.32 5,14.65 5,15A2,2 0 0,0 7,17H19V15H7.42A0.25,0.25 0 0,1 7.17,14.75C7.17,14.7 7.18,14.66 7.2,14.63L8.1,13H15.55C16.3,13 16.96,12.58 17.3,11.97L20.88,5.5C20.95,5.34 21,5.17 21,5A1,1 0 0,0 20,4H5.21L4.27,2M7,18C5.89,18 5,18.89 5,20A2,2 0 0,0 7,22A2,2 0 0,0 9,20C9,18.89 8.1,18 7,18Z"/>
+                </svg>
+                <span class="absolute right-0 top-0 rounded-full bg-red-600 w-4 h-4 top right p-0 m-0 text-white font-mono text-sm  leading-tight text-center">{{count}}
+              </span>
+            </a>
+          </li>
+  
+          <!-- Profile dropdown -->
+          
+        </div>
+      </div>
+    </div>
+  
+    <!-- Mobile menu, show/hide based on menu state. -->
+    <div class="sm:hidden" id="mobile-menu">
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+        <a href="#" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">All</a>
+  
+        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium" routerLink="/catagories">Fruits</a>
+  
+        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Vegitables</a>
+  
+        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Dairy</a>
+      </div>
+    </div>
+  </nav>
+  
+  <router-outlet></router-outlet>
+
+  <div class="alert" *ngIf="orderPlaced">
+    <span  class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    Your Order has been placed!
+  </div>
+
+ <div class="bg-white">
+    <div class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8" style="padding-left: 0px;">
+
+      <div class="alert" *ngIf="orderPlaced">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        &ensp; Your Order has been placed!
+      </div>
+
+          <div class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 display" style="column-gap: 12rem;">
+            <div *ngFor="let product of products; let i = index">
+          <div class="card flex flex-col justify-center p-10 bg-white rounded-lg shadow-2xl"
+          style="height: 400px;
+          width: 320px;"
+          >
+            <div class="prod-title">
+              <p class="text-2xl text-gray-900 "
+              >{{product.name}}</p>            
+            </div>
+            <div class="prod-img">
+              <img src="{{product.image}}"
+                   class="w-full object-cover object-center" />
+            </div>
+            <div class="prod-info grid gap-10">
+              <div class="flex flex-col md:flex-row justify-between items-center text-gray-900">
+                <p class="font-bold text-xl">₹{{product.price}}</p>
+                <button id={{i}} (click) = "addToCart($event)" style="margin-left: 10px; width: 160px;"
+                        class="px-6 py-2 transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border-2 border-gray-900 focus:outline-none">Add
+                  to cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- </div> -->
+    </div>
+  </div>
