@@ -64,7 +64,7 @@
             <span class="font-semibold text-sm uppercase">Items {{cart.length}}</span>
             <span class="font-semibold text-sm">₹{{currentCost}}</span>
           </div>
-          <div class="py-10">
+          <!-- <div class="py-10">
             <label for="promo" class="font-semibold inline-block mb-3 text-sm uppercase">Promo Code</label>
             <input type="text" [(ngModel)]= "promoCode" id="promo" placeholder="Enter your code" class="p-2 text-sm w-full">
           </div>
@@ -76,7 +76,7 @@
           <div class="alertRed" *ngIf="couponInvalid">
             <span  class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
             Promo code invalid!
-          </div>
+          </div> -->
           <div class="border-t mt-8">
             <div class="flex font-semibold justify-between py-6 text-sm uppercase">
               <span>Total cost</span>
@@ -89,7 +89,7 @@
             </div>
               
             </div>
-            <button (click)="checkout()" class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">Checkout</button>
+            <button (click)="checkout()" class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">Generate Bill</button>
           </div>
         </div>
   

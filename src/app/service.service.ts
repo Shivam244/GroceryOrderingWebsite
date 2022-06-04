@@ -9,9 +9,10 @@ export class ServiceService {
   cart = [];
   orderPlaced = false;
   constructor() {
-    this.jioMartToProducts(this.Fruits, "Fruits");
-    this.jioMartToProducts(this.Vegitables, "Vegitables");
-    this.jioMartToProducts(this.Dairy, "Dairy");
+    // this.jioMartToProducts(this.Fruits, "Fruits");
+    // this.jioMartToProducts(this.Vegitables, "Vegitables");
+    // this.jioMartToProducts(this.Dairy, "Dairy");
+    this.lotusToProducts(this.Telivision);
   }
 
   promoCodes: String[] = ['sirte', 'snehasoni', 'shivamtomar'];
@@ -30711,8 +30712,105 @@ export class ServiceService {
         }
       }]
 
+  Telivision = [{
+    "product_name" : "Samsung HD LED TV 80 cm (32 inches)",
+    "product_mrp" : 19999,
+    "image": "https://cdn.lotuselectronics.com/webpimages/427821IM.webp"
+  },
+  {
+    "product_name" : "Sony OLED TV 164 cm (65 inches)",
+    "product_mrp" : 36999,
+    "image": "https://cdn.lotuselectronics.com/webpimages/468751IM.webp"
+  },
+  {
+    "product_name" : "LG OLED TV 139 cm (55 inches)",
+    "product_mrp" : 29999,
+    "image": "https://cdn.lotuselectronics.com/webpimages/411941IM.webp"
+  },
+  {
+    "product_name" : "Samsung HD LED TV 80 cm (32 inches)",
+    "product_mrp" : 19999,
+    "image": "https://cdn.lotuselectronics.com/webpimages/427821IM.webp"
+  },
+  {
+    "product_name" : "Sony OLED TV 164 cm (65 inches)",
+    "product_mrp" : 36999,
+    "image": "https://cdn.lotuselectronics.com/webpimages/468751IM.webp"
+  },
+  {
+    "product_name" : "LG OLED TV 139 cm (55 inches)",
+    "product_mrp" : 29999,
+    "image": "https://cdn.lotuselectronics.com/webpimages/411941IM.webp"
+  },{
+    "product_name" : "Samsung HD LED TV 80 cm (32 inches)",
+    "product_mrp" : 19999,
+    "image": "https://cdn.lotuselectronics.com/webpimages/427821IM.webp"
+  },
+  {
+    "product_name" : "Sony OLED TV 164 cm (65 inches)",
+    "product_mrp" : 36999,
+    "image": "https://cdn.lotuselectronics.com/webpimages/468751IM.webp"
+  },
+  {
+    "product_name" : "LG OLED TV 139 cm (55 inches)",
+    "product_mrp" : 29999,
+    "image": "https://cdn.lotuselectronics.com/webpimages/411941IM.webp"
+  },{
+    "product_name" : "Samsung HD LED TV 80 cm (32 inches)",
+    "product_mrp" : 19999,
+    "image": "https://cdn.lotuselectronics.com/webpimages/427821IM.webp"
+  },
+  {
+    "product_name" : "Sony OLED TV 164 cm (65 inches)",
+    "product_mrp" : 36999,
+    "image": "https://cdn.lotuselectronics.com/webpimages/468751IM.webp"
+  },
+  {
+    "product_name" : "LG OLED TV 139 cm (55 inches)",
+    "product_mrp" : 29999,
+    "image": "https://cdn.lotuselectronics.com/webpimages/411941IM.webp"
+  },{
+    "product_name" : "Samsung HD LED TV 80 cm (32 inches)",
+    "product_mrp" : 19999,
+    "image": "https://cdn.lotuselectronics.com/webpimages/427821IM.webp"
+  },
+  {
+    "product_name" : "Sony OLED TV 164 cm (65 inches)",
+    "product_mrp" : 36999,
+    "image": "https://cdn.lotuselectronics.com/webpimages/468751IM.webp"
+  },
+  {
+    "product_name" : "LG OLED TV 139 cm (55 inches)",
+    "product_mrp" : 29999,
+    "image": "https://cdn.lotuselectronics.com/webpimages/411941IM.webp"
+  },
+
+]
+
   products: Product[] = [
   ];
+
+  image1 = "https://cdn.lotuselectronics.com/webpimages/427821IM.webp";
+  image2 = "https://cdn.lotuselectronics.com/webpimages/468751IM.webp";
+  image3 = "https://cdn.lotuselectronics.com/webpimages/411941IM.webp";
+
+
+  lotusToProducts(array){
+    var id = 0;
+    var imgId = 1;
+    if(imgId == 4) imgId = 3;
+    array.forEach(data =>{
+      let product = new Product();
+      product.id = id;
+      product.name = data.product_name;
+      product.price = data.product_mrp;
+      product.image = data.image;
+      product.quantity = 1;
+      // product.catagory = catagory;
+      id++;
+      this.products.push(product);
+    })
+  }
 
   jioMartToProducts(array, catagory){
     var id = 0;
